@@ -11,8 +11,6 @@ from selenium.webdriver.support.ui import Select
 
 
 
-
-
 """Alege câte 3 elemente din fiecare tip de selector din următoarele categorii: ID """ 
 #s = Service(ChromeDriverManager().install())
 # chrome.get('http://automationpractice.com/index.php?controller=contact')
@@ -139,4 +137,31 @@ from selenium.webdriver.support.ui import Select
 # sleep(2)
 # clasa[4].send_keys("04/04/2020")
 # sleep(2)
+
+"""Alege câte 3 elemente din fiecare tip de selector din următoarele categorii: 
+Css (1 după id, 1 după clasă, 1 după atribut=valoare_partiala) """ 
+
+s = Service(ChromeDriverManager().install())
+chrome = webdriver.Chrome(service=s)
+chrome.maximize_window()
+chrome.get('https://formy-project.herokuapp.com/form')
+
+chrome.find_element(By.CSS_SELECTOR, 'input#first-name').send_keys("Lovasz")
+chrome.find_element(By.CSS_SELECTOR, 'input#last-name').send_keys("Norbert")
+chrome.find_element(By.XPATH, '//*[@id="job-title"]').send_keys("Engineer")
+
+chrome.find_element(By.XPATH, '//*[@id="radio-button-3"]').click()
+chrome.find_element(By.CSS_SELECTOR, '#checkbox-1').click()
+
+chrome.find_element(By.XPATH,'//*[@id="select-menu"]/option[3]').click()
+chrome.find_element(By.CSS_SELECTOR, 'input#datepicker').send_keys("04/04/2020")
+
+
+sleep(3)
+chrome.find_element(By.CSS_SELECTOR,'body > div > form > div > div:nth-child(15) > a').click()
+
+
+sleep(3)
+
+
 
